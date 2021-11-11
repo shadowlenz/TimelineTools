@@ -9,7 +9,7 @@ public class TransformTweenerClip : PlayableAsset
     public TransformTweenerBehaviour template = new TransformTweenerBehaviour();
 
     public ExposedReference<Transform> locationTr;
-    public TransformTweenerBehaviour.LocatorTransform manuelTr;
+    public TransformTweenerBehaviour.LocatorTransform manualTr;
 
     //from TrackAsset
     [System.NonSerialized]
@@ -24,7 +24,7 @@ public class TransformTweenerClip : PlayableAsset
 
         TransformTweenerBehaviour transformMoveBehaviour = playable.GetBehaviour();
         transformMoveBehaviour.locationTr =  locationTr.Resolve(graph.GetResolver());
-        transformMoveBehaviour.manuelTr = manuelTr;
+        transformMoveBehaviour.manualTr = manualTr;
         transformMoveBehaviour.localOffsetTr = localTr;
   
 
