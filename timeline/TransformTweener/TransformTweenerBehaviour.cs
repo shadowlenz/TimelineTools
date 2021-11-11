@@ -8,6 +8,7 @@ public class TransformTweenerBehaviour : PlayableBehaviour
 {
     //from PlayableAsset
     public Transform locationTr;
+    public Transform lookAtTr;
     public LocatorTransform manualTr =
         new LocatorTransform()
         {
@@ -37,12 +38,13 @@ public class TransformTweenerBehaviour : PlayableBehaviour
 
         if (locationTr != null)
         {
+            //use locationTr
             posRot.pos =  locationTr.position;
             posRot.rot =  locationTr.rotation;
         }
         else
         {
-            //add local offset
+            //use manualTr and add local offset
             Vector3 offsetPos = (localOffsetTr != null) ? localOffsetTr.position : Vector3.zero;
             Quaternion offsetRot = (localOffsetTr != null) ? localOffsetTr.rotation : Quaternion.identity;
 
@@ -50,6 +52,11 @@ public class TransformTweenerBehaviour : PlayableBehaviour
             posRot.rot =  (manualTr.rot * offsetRot);
         }
 
+        if (lookAtTr != null)
+        {
+            //override rot to face lookAtTr 
+            posRot.rot = Quaternion.LookRotation((lookAtTr.position- posRot.pos).normalized);
+        }
 
         return posRot;
     }
