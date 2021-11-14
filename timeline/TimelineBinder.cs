@@ -103,7 +103,7 @@ public class TimelineBinder : MonoBehaviour
             case AutoGetObj.MainCamCinemaBrain:
                 return Camera.main.GetComponent<CinemachineBrain>();
             case AutoGetObj.CurrentPlayableActorTr:
-                return GameGlobal.instance.CurrentPlayableActor.sceneActor.transform;
+                //return GameGlobal.instance.CurrentPlayableActor.sceneActor.transform;
             default:
                 return null;
         }
