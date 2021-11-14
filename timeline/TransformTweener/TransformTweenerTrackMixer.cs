@@ -13,6 +13,7 @@ public class TransformTweenerTrackMixer : PlayableBehaviour
         //---------------- vars --------------------//
         Vector3? WeightPos = null;
         Quaternion? WeightRot = null;
+        Vector3? WeightLocalScale = null;
 
         Vector3? lastPos  = null;
         //------------------------------------------//
@@ -23,33 +24,40 @@ public class TransformTweenerTrackMixer : PlayableBehaviour
             ScriptPlayable<TransformTweenerBehaviour> inputPlayable = (ScriptPlayable<TransformTweenerBehaviour>)playable.GetInput(i);
             TransformTweenerBehaviour input = inputPlayable.GetBehaviour();
 
-            TransformTweenerBehaviour.LocatorTransform inputLocatorTr = input.GetLocatorTransform();
+            TransformTweenerClip.LocatorTRS inputLocatorTrS = input.GetLocatorTRS();
 
             float perc = (float)i / inputCount;
 
             float inputWeight = playable.GetInputWeight(i);
             if (inputWeight > 0)
             {
-                if (WeightPos is null) WeightPos = inputLocatorTr.pos; //first weighted
-                else WeightPos = Vector3.Lerp((Vector3)WeightPos, inputLocatorTr.pos, inputWeight); //lerp
+                //pos
+                if (WeightPos is null) WeightPos = inputLocatorTrS.pos; //first weighted
+                else WeightPos = Vector3.Lerp((Vector3)WeightPos, inputLocatorTrS.pos, inputWeight); //lerp
+                //rot
                 if (WeightRot is null)
                 {
-                    WeightRot = inputLocatorTr.rot; //first weighted
+                    WeightRot = inputLocatorTrS.rot; //first weighted
                 }
                 else
                 {
                     WeightRot = NormalizeQuaternion((Quaternion)WeightRot);
-                    WeightRot = Quaternion.Lerp((Quaternion)WeightRot, inputLocatorTr.rot, inputWeight); //lerp
+                    WeightRot = Quaternion.Lerp((Quaternion)WeightRot, inputLocatorTrS.rot, inputWeight); //lerp
                 }
+                //localscale
+                if (WeightLocalScale is null) WeightLocalScale = inputLocatorTrS.localScale; //first weighted
+                else WeightLocalScale = Vector3.Lerp((Vector3)WeightLocalScale, inputLocatorTrS.localScale, inputWeight); //lerp
             }
+            ///--------debug------------///
             //draw all pos rails
             if (lastPos != null)
             {
-                Debug.DrawLine((Vector3)lastPos, inputLocatorTr.pos,  Color.Lerp(Color.black, Color.white, perc) * input.debugColor);
+                Debug.DrawLine((Vector3)lastPos, inputLocatorTrS.pos,  Color.Lerp(Color.black, Color.white, perc) * input.debugColor);
             }
-            lastPos = inputLocatorTr.pos;
+            lastPos = inputLocatorTrS.pos;
             //draw all facing
-            Debug.DrawRay(inputLocatorTr.pos, (inputLocatorTr.rot * Vector3.forward) * 0.2f, Color.red);
+            Debug.DrawRay(inputLocatorTrS.pos, (inputLocatorTrS.rot * Vector3.forward) /2 , Color.red);
+            ///--------------------------///
         }
  
         if (WeightPos != null && WeightRot != null)
@@ -57,9 +65,10 @@ public class TransformTweenerTrackMixer : PlayableBehaviour
             //------------ set ----------------//
             ThisTr.position = (Vector3)WeightPos;
             ThisTr.rotation = (Quaternion)WeightRot;
+            ThisTr.localScale = (Vector3)WeightLocalScale;
             //draw current pos/ facing
-            Debug.DrawRay((Vector3)WeightPos, (Quaternion)WeightRot * Vector3.forward * 0.2f, Color.blue);
-            Debug.DrawRay((Vector3)WeightPos, (Quaternion)WeightRot * Vector3.up * 0.2f, Color.green);
+            Debug.DrawRay((Vector3)WeightPos, ((Quaternion)WeightRot * Vector3.forward)/2, Color.blue);
+            Debug.DrawRay((Vector3)WeightPos, ((Quaternion)WeightRot * Vector3.up)/2, Color.green);
         }
     }
 

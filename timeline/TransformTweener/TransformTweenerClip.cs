@@ -10,8 +10,26 @@ public class TransformTweenerClip : PlayableAsset
 
     public ExposedReference<Transform> locationTr;
     public ExposedReference<Transform> lookAtTr;
-    public TransformTweenerBehaviour.LocatorTransform manualTr;
 
+    //----------------------LocatorTRS-----------------------//
+    [System.Serializable]
+    public struct LocatorTRS
+    {
+        public Vector3 pos;
+        public Quaternion rot;
+        public Vector3 localScale;
+    }
+    public static LocatorTRS DefaultVal()
+    {
+        return new LocatorTRS()
+        {
+            pos = Vector3.zero,
+            rot = Quaternion.identity,
+            localScale = Vector3.one
+        };
+    }
+    public LocatorTRS manualTRS = DefaultVal();
+    //--------------------------------------------------------//
     //from TrackAsset
     [System.NonSerialized]
     public Color debugColor = Color.white;
@@ -26,7 +44,7 @@ public class TransformTweenerClip : PlayableAsset
         TransformTweenerBehaviour transformMoveBehaviour = playable.GetBehaviour();
         transformMoveBehaviour.locationTr =  locationTr.Resolve(graph.GetResolver());
         transformMoveBehaviour.lookAtTr = lookAtTr.Resolve(graph.GetResolver());
-        transformMoveBehaviour.manualTr = manualTr;
+        transformMoveBehaviour.manualTRS = manualTRS;
         transformMoveBehaviour.localOffsetTr = localTr;
   
 

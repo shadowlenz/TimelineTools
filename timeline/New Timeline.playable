@@ -224,9 +224,10 @@ MonoBehaviour:
   lookAtTr:
     exposedName: a4bd53d1a7a6c424aa8e05a02890d370
     defaultValue: {fileID: 0}
-  manualTr:
-    pos: {x: 5, y: 5, z: 0}
-    rot: {x: 0, y: 0, z: 0, w: 1}
+  manualTRS:
+    pos: {x: 0, y: 0, z: 0}
+    rot: {x: 0, y: 0, z: 0, w: 0}
+    localScale: {x: 1, y: 1, z: 1}
 --- !u!114 &-3338142541333125222
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -245,9 +246,10 @@ MonoBehaviour:
   lookAtTr:
     exposedName: c4ebb9100e7422e47a10c2d868193404
     defaultValue: {fileID: 0}
-  manualTr:
+  manualTRS:
     pos: {x: 0, y: 0, z: 0}
     rot: {x: 0, y: 0, z: 0, w: 0}
+    localScale: {x: 1, y: 1, z: 1}
 --- !u!114 &-3106686028205984846
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -266,9 +268,10 @@ MonoBehaviour:
   lookAtTr:
     exposedName: 
     defaultValue: {fileID: 0}
-  manualTr:
+  manualTRS:
     pos: {x: 0, y: 0, z: 0}
     rot: {x: 0, y: 0, z: 0, w: 0}
+    localScale: {x: 1, y: 1, z: 1}
 --- !u!114 &-2985632907656741665
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -753,9 +756,10 @@ MonoBehaviour:
   lookAtTr:
     exposedName: 
     defaultValue: {fileID: 0}
-  manualTr:
+  manualTRS:
     pos: {x: 0, y: 0, z: 0}
     rot: {x: 0, y: 0, z: 0, w: 0}
+    localScale: {x: 1, y: 1, z: 1}
 --- !u!114 &4172215753884401729
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -774,9 +778,10 @@ MonoBehaviour:
   lookAtTr:
     exposedName: 
     defaultValue: {fileID: 0}
-  manualTr:
+  manualTRS:
     pos: {x: 0, y: 0, z: 0}
     rot: {x: 0, y: 0, z: 0, w: 0}
+    localScale: {x: 0, y: 0, z: 0}
 --- !u!114 &5482708340359455212
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -820,9 +825,10 @@ MonoBehaviour:
   lookAtTr:
     exposedName: 8030826d20a27aa46a2d4cf1ecd58795
     defaultValue: {fileID: 0}
-  manualTr:
-    pos: {x: 0, y: 5, z: 0}
-    rot: {x: 0, y: 0.4617486, z: 0, w: 0.8870108}
+  manualTRS:
+    pos: {x: 0, y: 10.62, z: 0}
+    rot: {x: 0, y: 0, z: 0, w: 0}
+    localScale: {x: 1, y: 1, z: 1}
 --- !u!114 &7108653678267582025
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -841,9 +847,10 @@ MonoBehaviour:
   lookAtTr:
     exposedName: 
     defaultValue: {fileID: 0}
-  manualTr:
+  manualTRS:
     pos: {x: 0, y: 0, z: 0}
     rot: {x: 0, y: 0, z: 0, w: 0}
+    localScale: {x: 0, y: 0, z: 0}
 --- !u!114 &8837844616644210607
 MonoBehaviour:
   m_ObjectHideFlags: 1
