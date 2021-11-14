@@ -621,7 +621,7 @@ MonoBehaviour:
   debugColor: {r: 0, g: 1, b: 0.81877446, a: 1}
   isLocal: 0
   localOffsetTr:
-    exposedName: 2031a1ae53886bf49a80730dd6f054ae
+    exposedName: 
     defaultValue: {fileID: 0}
 --- !u!114 &1851608317786818704
 MonoBehaviour:

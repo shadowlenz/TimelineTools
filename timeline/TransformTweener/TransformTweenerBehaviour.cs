@@ -42,7 +42,7 @@ public class TransformTweenerBehaviour : PlayableBehaviour
 
             posRot.pos =  (manualTRS.pos + offsetPos);
             posRot.rot =  (manualTRS.rot * offsetRot);
-            posRot.localScale = (manualTRS.localScale + offsetScale);
+            posRot.localScale = Vector3.Scale(manualTRS.localScale , offsetScale);
         }
 
         if (lookAtTr != null)
