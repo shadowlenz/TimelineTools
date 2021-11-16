@@ -18,17 +18,18 @@ public class TransformTweenerClip : PlayableAsset
         public Vector3 pos;
         public Quaternion rot;
         public Vector3 localScale;
-    }
-    public static LocatorTRS DefaultVal()
-    {
-        return new LocatorTRS()
+        public static LocatorTRS DefaultVal()
         {
-            pos = Vector3.zero,
-            rot = Quaternion.identity,
-            localScale = Vector3.one
-        };
+            return new LocatorTRS()
+            {
+                pos = Vector3.zero,
+                rot = Quaternion.identity,
+                localScale = Vector3.one
+            };
+        }
     }
-    public LocatorTRS manualTRS = DefaultVal();
+
+    public LocatorTRS manualTRS = LocatorTRS.DefaultVal();
     //--------------------------------------------------------//
     //from TrackAsset
     [System.NonSerialized]

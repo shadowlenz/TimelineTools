@@ -9,7 +9,7 @@ public class TransformTweenerBehaviour : PlayableBehaviour
     //from PlayableAsset
     public Transform locationTr;
     public Transform lookAtTr;
-    public TransformTweenerClip.LocatorTRS manualTRS = TransformTweenerClip.DefaultVal();
+    public TransformTweenerClip.LocatorTRS manualTRS = TransformTweenerClip.LocatorTRS.DefaultVal();
 
     //from TrackAsset
     [System.NonSerialized]
